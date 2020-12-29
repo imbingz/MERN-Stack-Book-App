@@ -1,12 +1,23 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Save from './pages/Save';
+import Search from './pages/Search';
 
 
 function App() {
-  return (
-    <div className="App">
-     <h1>Book Search</h1>
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			{/* <GlobalProvider> */}
+			{/* <Navbar /> */}
+			<div className='App'>
+				<Switch>
+					<Route exact path='/' component={Search} />
+					<Route exact path='/save' component={Save} />
+				</Switch>
+			</div>
+			{/* </GlobalProvider> */}
+		</BrowserRouter>
+	);
 }
 
 export default App;
