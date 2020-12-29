@@ -1,0 +1,21 @@
+.Navbar {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid;
+	margin-bottom: 2rem;
+	padding: 1.2rem 0.8rem;
+}
+.Navbar-brand {
+	font-size: 2.4rem;
+}
+.Navbar-links {
+	display: flex;
+	flex-grow: 1;
+	justify-content: flex-end;
+	list-style: none;
+}
+.Navbar-link {
+	cursor: pointer;
+	font-size: 1.6rem;
+	margin-right: 3.6rem;
+}
