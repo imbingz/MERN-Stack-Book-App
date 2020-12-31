@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Save from './pages/Save';
 import Search from './pages/Search';
 import Navbar from './components/Navbar';
-import GlobalProvider from './utils/GlobalContext';
+import GlobalProvider from './utils/GlobalContext'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 	return (
