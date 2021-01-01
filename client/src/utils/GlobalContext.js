@@ -16,11 +16,6 @@ const reducer = (state, action) => {
                 ...state,
                 books: action.payload
             };
-		case 'getSaved':
-			return {
-				...state,
-				books: action.payload
-			};
 		default:
 			return state;
 	}
