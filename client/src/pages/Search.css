@@ -5,14 +5,14 @@
 }
 
 .Search-title {
-	color: rgb(5, 201, 90);
+	color: rgb(8, 187, 2);
 	font-weight: 700;
 	letter-spacing: 0.2rem;
 }
 
 @media only screen and (max-width: 768px) {
 	.Search-title {
-		color: rgb(5, 201, 90);
+		color: rgb(8, 187, 2);
 		font-weight: 700;
 		font-size: 2rem;
 		letter-spacing: 0.2rem;
