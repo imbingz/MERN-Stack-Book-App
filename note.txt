@@ -1,0 +1,53 @@
+
+book fetch result  example  obj
+https://www.googleapis.com/books/v1/volumes/GxXGDwAAQBAJ
+
+
+
+at least two React Components for each page `Search` and `Saved`.
+
+1. get search query input from user
+
+2. fetch book using google book search API 
+
+3. render books with following info (title, authors,  descriptions, image thubmnail, link to more info )
+
+4. a save  button  on the book card 
+
+5. when save button clicked, create a  new  book document in db  
+
+6. render all saved books as well with a 'view button' and a 'delete button'/ 'view-button' will get to google book info link. 'delete button' will remove the book from db. 
+
+7. create a mongoose Book schema.
+
+8.  Add the following Express routes for your app:
+
+* `/api/books` (get) - Should return all saved books as JSON.
+
+* `/api/books` (post) - Will be used to save a new book to the database.
+
+* `/api/books/:id` (delete) - Will be used to delete a book from the database by Mongo `_id`.
+
+* `*` (get) - Will load your single HTML page in `client/build/index.html`. Make sure you have this _after_ all other routes are defined.
+
+* `title` - Title of the book from the Google Books API
+
+* `authors` - The books's author(s) as returned from the Google Books API
+
+* `description` - The book's description as returned from the Google Books API
+
+* `image` - The Book's thumbnail image as returned from the Google Books API
+
+* `link` - The Book's information link as returned from the Google Books API
+
+* Creating `documents` in your `books` collection similar to the following:
+
+    ```js
+    {
+      authors: ["Suzanne Collins"]
+      description: "Set in a dark vision of the near future, a terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to appear in a live event called The Hunger Games. There is only one rule: kill or be killed. When sixteen-year-old Katniss Everdeen steps forward to take her younger sister's place in the games, she sees it as a death sentence. But Katniss has been close to death before. For her, survival is second nature."
+      image: "http://books.google.com/books/content?id=sazytgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+      link: "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
+      title: "The Hunger Games"
+    }
+    ```

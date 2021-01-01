@@ -1,13 +1,13 @@
 import React from 'react';
 import { useGlobalContext } from '../../utils/GlobalContext';
 import { Button, Container, Col, Row, Card } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 function Results () {
 	const [ state ] = useGlobalContext();
 
 	//Post api/books
 	const handleSaveBook = async book => {
-		console.log('button licked', book);
 		try {
 			const response = await fetch('/api/books', {
 				headers: {
@@ -26,41 +26,58 @@ function Results () {
 			const json = await response.json();
 
 			if (json.message) {
-				alert('This book is already saved.');
+				toast.warning('This book is saved already!', {
+					position: toast.POSITION.TOP_CENTER
+				});
 			}
 
 			if (json.success) {
-				alert('book saved successfully');
+				toast.success('The book is saved successfully!', {
+					position: toast.POSITION.TOP_CENTER
+				});
 			}
-
-			// dispatch({ type: 'saveBook', payload: json.data });
-			// console.log('dispatch - saveBook', dispatch);
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
 	return (
-		<Container className='my-5 p-3' style={{ backgroundColor: '#d4d3d6' }}>
-			<Row className='mx-auto'>
+		<Container className='my-5 p-3'>
+			<Row className='mx-5'>
 				{state.books &&
 					state.books.map((book, index) => (
 						<div key={index} className='my-3'>
 							<Col className='mb-4'>
-								<Card style={{ width: '325px', height: '700' }} className='p-4'>
-									<Card.Img variant='top' src={book.volumeInfo.imageLinks.thumbnail} style={{ height: 320 }} />
+								<Card style={{ width: '300px', height: '700', backgroundColor: '#deeaf7' }} className='p-4'>
+									{book.volumeInfo.imageLinks && (
+										<Card.Img
+											variant='top'
+											src={book.volumeInfo.imageLinks.thumbnail}
+											style={{ height: 320 }}
+										/>
+									)}
 
 									<Card.Body>
-										<Card.Title>{book.volumeInfo.title}</Card.Title>
-										<Card.Title className='font-italic text-muted'>
-											By: {book.volumeInfo.authors[0]}
-										</Card.Title>
+										{book.volumeInfo.title && <Card.Title>{book.volumeInfo.title}</Card.Title>}
+										{book.volumeInfo.authors && (
+											<Card.Title className='font-italic text-muted' style={{ fontSize: '1.1rem' }}>
+												By: {book.volumeInfo.authors[0]}
+											</Card.Title>
+										)}
+
 										{book.volumeInfo.description && (
 											<Card.Text>{book.volumeInfo.description.substr(0, 100)}</Card.Text>
 										)}
-										<Card.Text>
-											<a href={book.volumeInfo.infoLink}>{book.volumeInfo.infoLink}</a>
-										</Card.Text>
+
+										{book.volumeInfo.infoLink && (
+											<Card.Text>
+												<a href={book.volumeInfo.infoLink} target='_blank' rel='noreferrer'>
+													{' '}
+													View Details
+												</a>
+											</Card.Text>
+										)}
+
 										<div className='mt-4'>
 											<Button
 												size='sm'
