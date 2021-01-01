@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, Col, Row, Card } from 'react-bootstrap';
-// import { useGlobalContext } from '../utils/GlobalContext';
+import { toast } from 'react-toastify';
 
 function Save () {
 	const [ savedBooks, setSavedBooks ] = useState([]);
@@ -14,11 +14,6 @@ function Save () {
 					console.log('SavedBooks: ', json.data);
 
 					setSavedBooks(json.data);
-					//==> (json.data) {success: true, data}
-					//pass arguments to dispacth
-					// dispatch({ type: 'getSaved', payload: json.data });
-					// console.log('dispatch in getSavedBooks:', dispatch);
-					// console.log('state in getSavedBooks', state);
 				} catch (err) {
 					console.error(err);
 				}
@@ -30,7 +25,6 @@ function Save () {
 	);
 
 	const handleDeleteBook = async book => {
-		console.log('delete button clicked');
 		try {
 			const response = await fetch(`/api/books/${book.id}`, {
 				headers: {
@@ -40,40 +34,53 @@ function Save () {
 				method: 'DELETE'
 			});
 			const json = await response.json();
-			console.log('delete reponse line 43 in Save.jsx: ', json.success, json.data);
 
 			if (json.data) {
 				setSavedBooks(savedBooks.filter(book => book.id !== json.data.id));
+				toast.success('The book is removed successfully!', {
+					position: toast.POSITION.TOP_CENTER
+				});
 			}
-
-			// dispatch({ type: 'deleteBook', payload: json.data });
-			// console.log('dispatch - deleteBook', dispatch);
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
 	return (
-		<Container className='my-5 p-3' style={{ backgroundColor: '#d4d3d6' }}>
-			<Row>
-				<h2>Saved Books</h2>
+		<Container fluid className='my-5 p-3 ml-5'>
+			<Row className='mx-auto'>
+				<h3 className='px-3 mx-5' style={{ color: '#178a49' }}>
+					Saved Books
+				</h3>
 			</Row>
 
-			<Row className='mx-auto'>
+			<Row className='ml-5'>
 				{savedBooks &&
 					savedBooks.map((book, index) => (
 						<div key={index} className='my-3'>
 							<Col className='mb-4'>
-								<Card style={{ width: '325px', height: '700' }} className='p-4'>
-									<Card.Img variant='top' src={book.image} style={{ height: 320 }} />
+								<Card style={{ width: '325px', backgroundColor: '#dcf8e8' }} className='p-4'>
+									{book.image && <Card.Img variant='top' src={book.image} style={{ height: 320 }} />}
 
 									<Card.Body>
-										<Card.Title>{book.title}</Card.Title>
-										<Card.Title className='font-italic text-muted'>By: {book.authors[0]}</Card.Title>
+										{book.title && <Card.Title style={{ color: '#306' }}>{book.title}</Card.Title>}
+
+										{book.authors && (
+											<Card.Title className='font-italic text-muted' style={{ fontSize: '1.1rem' }}>
+												By: {book.authors[0]}
+											</Card.Title>
+										)}
+
 										{book.description && <Card.Text>{book.description.substr(0, 100)}</Card.Text>}
-										<Card.Text>
-											<a href={book.infoLink}>{book.infoLink}</a>
-										</Card.Text>
+
+										{book.infoLink && (
+											<Card.Text>
+												<a href={book.infoLink} target='_blank' rel='noreferrer'>
+													View Details
+												</a>
+											</Card.Text>
+										)}
+
 										<div className='mt-4'>
 											<Button
 												size='sm'
