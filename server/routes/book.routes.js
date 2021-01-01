@@ -18,10 +18,8 @@ router
     })
     /** /api/books post */ 
 	.post(({body}, res) => {
-        // console.log(`api/books post body:`, body);
         Book.findOne({id: body.id}).exec((err, book) => {
             if (book) {
-                // console.log('found the duplicated book');
                 return res.json({message: 'This book is already saved'})
             }
             Book.create(body)
