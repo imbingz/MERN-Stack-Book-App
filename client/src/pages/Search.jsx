@@ -70,7 +70,7 @@ function Search () {
 		<main>
 			<Jumbotron fluid className='jumbotron'>
 				<Container className='d-flex flex-column justify-content-center align-items-center'>
-					<h1 className='Search-title'>Discover Your Next Read</h1>
+					<h1 className='Search-title bg-light p-1 mt-5'>Discover Your Next Read</h1>
 					<form onSubmit={handleFetchBook}>
 						<label htmlFor='query' />
 						<input

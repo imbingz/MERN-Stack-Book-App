@@ -2,6 +2,7 @@
 	background-image: url('../hero.jpg');
 	background-position: center;
 	background-size: cover;
+	height: 40vh;
 }
 
 .Search-title {
@@ -10,21 +11,24 @@
 	letter-spacing: 0.2rem;
 }
 
-@media only screen and (max-width: 768px) {
-	.Search-title {
-		color: rgb(8, 187, 2);
-		font-weight: 700;
-		font-size: 2rem;
-		letter-spacing: 0.2rem;
-	}
-}
-
 .Search-input {
 	min-width: 250px;
-	padding: 6px 18px;
+	padding: 7px 18px;
 	display: inline-block;
 	margin: 2rem 1rem;
 	border-radius: 25px;
 	border: none;
 	font-size: small;
+}
+
+@media only screen and (max-width: 768px) {
+	.jumbotron {
+		height: 30vh;
+	}
+	.Search-title {
+		color: rgb(8, 187, 2);
+		font-weight: 700;
+		font-size: 1.8rem;
+		letter-spacing: 0.2rem;
+	}
 }
