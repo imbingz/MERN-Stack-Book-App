@@ -49,7 +49,7 @@ function Save () {
 	return (
 		<Container fluid className='my-5 p-3 ml-5'>
 			<Row className='mx-auto'>
-				<h3 className='px-3 mx-5' style={{ color: '#178a49' }}>
+				<h3 className='px-3 mx-5 font-weight-bold' style={{ color: '#fb2' }}>
 					Saved Books
 				</h3>
 			</Row>

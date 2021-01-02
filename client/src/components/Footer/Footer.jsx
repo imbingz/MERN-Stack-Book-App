@@ -12,7 +12,7 @@ function Footer () {
 					<Link to='/' className='pl-2'>
 						<AiFillHome size={22} style={{ fill: '#1c0' }} />{' '}
 					</Link>{' '}
-                   <Link to='/save' className='px-2'>< BsBookmarks size={ 20 } style={ { fill: 'yellow' } } /></Link>
+                   <Link to='/save' className='px-2'>< BsBookmarks size={ 20 } style={ { fill: '#fb2' } } /></Link>
 					<small className='text-muted mx-5 px-5'>
 						{' '}
 						Copyright &copy; 2020 by Bing Z. <span style={{ color: 'red' }}>&hearts;</span>{' '}
