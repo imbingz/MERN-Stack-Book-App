@@ -31,6 +31,7 @@
 
 
   ## Screenshots-Demo
+  <kbd>![screenshot-demo1](./client/public/assets/demo1.gif)</kbd>
   <kbd>![screenshot-demo1](./client/public/assets/demo.gif)</kbd>
   ## Project Objective
   * This should be a SPA (Single Page Application) that uses [`react-router-dom`](https://github.com/reactjs/react-router) to navigate, hide and show React components without changing the route within Express.
