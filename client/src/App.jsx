@@ -14,13 +14,15 @@ function App () {
 		<BrowserRouter>
 			<GlobalProvider>
 				<Navbar />
-				<div className='App'>
+				<main className='App'>
 					<Switch>
 						<Route exact path='/' component={Search} />
 						<Route exact path='/save' component={Save} />
+                        
 					</Switch>
-				</div>
-				<ToastContainer transition={Zoom} autoClose={3000} />
+                    <ToastContainer transition={Zoom} autoClose={3000} />
+				</main>
+				
 				<Footer />
 			</GlobalProvider>
 		</BrowserRouter>
