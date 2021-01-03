@@ -37,7 +37,10 @@ function Results () {
 				});
 			}
 		} catch (error) {
-			console.log(error);
+            console.log(error);
+            toast.error('Error saving books', {
+                position: toast.POSITION.TOP_CENTER
+            });
 		}
 	};
 

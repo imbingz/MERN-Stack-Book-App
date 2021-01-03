@@ -39,7 +39,10 @@ function Search () {
 			}
 		} catch (err) {
 			setLoading(false);
-			console.error(err);
+            console.error(err);
+            toast.error('Error fetching books', {
+                position: toast.POSITION.TOP_CENTER
+            });
 		}
 
 		if (queryRef.current) {
@@ -67,7 +70,7 @@ function Search () {
 	}
 
 	return (
-		<main>
+		<>
 			<Jumbotron fluid className='jumbotron'>
 				<Container className='d-flex flex-column justify-content-center align-items-center'>
 					<h1 className='Search-title bg-light p-1 mt-5'>Discover Your Next Read</h1>
@@ -90,7 +93,7 @@ function Search () {
 			</Jumbotron>
 
 			<Results />
-		</main>
+		</>
 	);
 }
 
