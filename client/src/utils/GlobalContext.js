@@ -23,7 +23,6 @@ const reducer = (state, action) => {
 
 const GlobalProvider = props => {
     const [ state, dispatch ] = useReducer(reducer, initState);
-    console.log('current state in inside GlobalProvider line 31: ', state);
 	return <GlobalContext.Provider value={[ state, dispatch ]} {...props} />;
 };
 

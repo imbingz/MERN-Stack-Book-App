@@ -11,11 +11,12 @@ function Save () {
 				try {
 					const response = await fetch('/api/books');
 					const json = await response.json();
-					console.log('SavedBooks: ', json.data);
-
 					setSavedBooks(json.data);
 				} catch (err) {
-					console.error(err);
+                    console.error(err);
+                    toast.error('Error getting saved books', {
+                        position: toast.POSITION.TOP_CENTER
+                    });
 				}
 			}
 			getSavedBooks();
@@ -42,7 +43,10 @@ function Save () {
 				});
 			}
 		} catch (error) {
-			console.log(error);
+            console.log(error);
+            toast.error('Error removing books', {
+                position: toast.POSITION.TOP_CENTER
+            });
 		}
 	};
 

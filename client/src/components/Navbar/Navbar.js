@@ -6,8 +6,6 @@ import './Navbar.css';
 function Navbar() {
     const [isSearch, setIsSearch] = useState(false)
     const location = useLocation();
-
-    console.log(location.pathname);
     
     useEffect(() => {
         if(location.pathname === '/save') {
