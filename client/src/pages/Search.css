@@ -2,7 +2,7 @@
 	background-image: url('../hero.jpg');
 	background-position: center;
 	background-size: cover;
-	height: 40vh;
+	height: 50vh;
 }
 
 .Search-title {
@@ -23,8 +23,9 @@
 
 @media only screen and (max-width: 768px) {
 	.jumbotron {
-		height: 30vh;
+		height: 40vh;
 	}
+
 	.Search-title {
 		color: rgb(8, 187, 2);
 		font-weight: 700;
