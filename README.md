@@ -1,5 +1,5 @@
 # Book-Search-Full-Stack
- A React-based Single-Page-App (SPA) with helper/util functions and React Hooks to query and display books based on user searches. It also uses Node, Express and MongoDB so that users can save books to review or purchase later.
+ A React-based Single-Page-App (SPA) with helper/util functions and React Hooks to query and display books based on user searches. It also uses Node, Express, MongoDB, and socket.io. 
 
 <hr>
 
@@ -36,6 +36,7 @@
   ## Project Objective
   * This should be a SPA (Single Page Application) that uses [`react-router-dom`](https://github.com/reactjs/react-router) to navigate, hide and show React components without changing the route within Express.
   * User can search for books via the Google Books API and render them here. User has the option to "View" a book, bringing them to the book on Google Books, or "Save" a book, saving it to the Mongo database.
+  * Use socket.io to create a notification of the saved-book title that triggers whenever a user saves an book. 
   * Renders all books saved to the Mongo database. User has an option to "View" the book, bringing them to the book on Google Books, or "Delete" a book, removing it from the Mongo database.
   * At a minimum, books should have each of the following fields:
       * `title` - Title of the book from the Google Books API
@@ -53,7 +54,7 @@
 
   ## Technologies 
   ```
-  Reactjs node.js, Mongodb, Mongoose, Express js <br>
+  Reactjs node.js, Mongodb, Mongoose, Express js, socket.io/socket.io-client
   
   React-Bootstrap, React-Router-Dom,  React-Icons, React-Tostify
   ```
