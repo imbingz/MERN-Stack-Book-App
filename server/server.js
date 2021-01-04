@@ -33,7 +33,6 @@ io.on('connection', socket => {
     socket.emit("your id", socket.id);
 
 	socket.on('save book', title => {
-        console.log('saved the book title: ', title);
 		io.emit('saved book title', title);
 	});
 });

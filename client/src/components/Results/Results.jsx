@@ -25,7 +25,6 @@ function Results () {
         }
 
         socket.on('saved book title', (title) => {
-            console.log("saved book title", title);
             toast.info(`Saved a book titled ${title}`, {
             position: toast.POSITION.TOP_RIGHT
           });
