@@ -37,8 +37,7 @@ router
 
 /** /api/books/:id delete */ 
 router.route('/:id').delete((req, res) => {
-	console.log(req.params);
-
+    
 	Book.findOneAndDelete({id: req.params.id})
 		.then(data => {
             if(data) {
