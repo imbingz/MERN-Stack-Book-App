@@ -1,10 +1,38 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useGlobalContext } from '../../utils/GlobalContext';
 import { Button, Container, Col, Row, Card } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+import io from "socket.io-client";
+
+let socket;
 
 function Results () {
-	const [ state ] = useGlobalContext();
+    const [ state ] = useGlobalContext();
+
+    //set up socket instance n connection
+    useEffect(() => {
+
+        if (!socket) {
+            socket = io.connect('/'); 
+    
+            socket.on('your id', (id) => {
+                console.log('Your socket.id is:', id);
+            });
+    
+            socket.on('connect_error', err => {
+                console.log(err);
+            });
+        }
+
+        socket.on('saved book title', (title) => {
+            console.log("saved book title", title);
+            toast.info(`Saved a book titled ${title}`, {
+            position: toast.POSITION.TOP_RIGHT
+          });
+        })
+
+    }, [])
+
 
 	//Post api/books
 	const handleSaveBook = async book => {
@@ -32,6 +60,8 @@ function Results () {
 			}
 
 			if (json.success) {
+                // send event to server on save book
+                socket.emit('save book', json.data.title)
 				toast.success('The book is saved successfully!', {
 					position: toast.POSITION.TOP_CENTER
 				});
