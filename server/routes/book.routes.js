@@ -8,7 +8,7 @@ router
 	.get((req, res) => {
 		Book.find({})
 			.then(data => {
-				console.log('get / route', data);
+				
 				res.json({ success: true, data });
 			})
 			.catch(e => {
@@ -24,7 +24,6 @@ router
             }
             Book.create(body)
 			.then(data => {
-                console.log('response data sent after creating doc:', data);
 				res.json({ success: true, data });
 			})
 			.catch(e => {
@@ -43,7 +42,6 @@ router.route('/:id').delete((req, res) => {
 	Book.findOneAndDelete({id: req.params.id})
 		.then(data => {
             if(data) {
-                console.log('deleted book data res', data);
 			   return res.json({ success: true, data });      
 		}})
 		.catch(err => {
