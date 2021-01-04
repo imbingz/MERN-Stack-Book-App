@@ -3,6 +3,10 @@ const express = require('express');
 const routes = require('./routes');
 const app = express();
 const path = require('path');
+//set up socket server 
+const http = require('http').createServer(app);
+//to initialize a new socket server instance
+const io = require('socket.io')(http);
 
 //db connection
 require('./config/db')();
@@ -22,6 +26,19 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-app.listen(PORT, () => {
+//server listener on connection
+io.on('connection', socket => {
+    console.log('a user connected, socket.id is: ', socket.id);
+
+    socket.emit("your id", socket.id);
+
+	socket.on('save book', title => {
+        console.log('saved the book title: ', title);
+		io.emit('saved book title', title);
+	});
+});
+
+
+http.listen(PORT, () => {
     console.log(`listening on PORT ${PORT}. http://localhost:${PORT}`);
 });
